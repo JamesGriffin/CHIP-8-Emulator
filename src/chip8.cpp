@@ -305,7 +305,7 @@ void Chip8::emulate_cycle() {
 
         // CXNN - Sets VX to a random number, masked by NN.
         case 0xC000:
-            V[(opcode & 0x0F00) >> 8] = (rand() % 0xFF) & (opcode & 0x00FF);
+            V[(opcode & 0x0F00) >> 8] = (rand() % (0xFF + 1)) & (opcode & 0x00FF);
             pc += 2;
             break;
 
