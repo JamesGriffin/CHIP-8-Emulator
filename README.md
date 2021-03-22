@@ -1,6 +1,8 @@
 # CHIP-8-Emulator
 A CHIP-8 emulator in C++
 
+[![CMake](https://github.com/kdridi/CHIP-8-Emulator/actions/workflows/cmake.yml/badge.svg)](https://github.com/kdridi/CHIP-8-Emulator/actions/workflows/cmake.yml)
+
 ![Space Invaders](doc/screenshots/invaders.png "Space Invaders")
 *Space Invaders*
 
