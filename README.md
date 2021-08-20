@@ -35,6 +35,7 @@ Run:
 23 (public domain) ROMs are included in the `roms` directory.
 
 ## References
+
 Some helpful resources I used when writing this
 
 - http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/
