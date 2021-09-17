@@ -1,6 +1,8 @@
 # CHIP-8-Emulator
 A CHIP-8 emulator in C++
 
+[![CMake](https://github.com/kdridi/CHIP-8-Emulator/actions/workflows/cmake.yml/badge.svg)](https://github.com/kdridi/CHIP-8-Emulator/actions/workflows/cmake.yml)
+
 ![Space Invaders](doc/screenshots/invaders.png "Space Invaders")
 *Space Invaders*
 
@@ -33,6 +35,7 @@ Run:
 23 (public domain) ROMs are included in the `roms` directory.
 
 ## References
+
 Some helpful resources I used when writing this
 
 - http://www.multigesture.net/articles/how-to-write-an-emulator-chip-8-interpreter/

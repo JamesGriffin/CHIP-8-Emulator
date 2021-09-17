@@ -4,7 +4,6 @@
 #include <random>
 #include "time.h"
 
-
 #include "chip8.h"
 
 unsigned char chip8_fontset[80] =

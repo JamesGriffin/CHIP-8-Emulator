@@ -1,9 +1,8 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
-#include "stdint.h"
-#include "SDL2/SDL.h"
-
+#include <stdint.h>
+#include <SDL.h>
 
 #include "chip8.h"
 
