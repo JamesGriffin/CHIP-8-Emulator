@@ -123,7 +123,7 @@ bool Chip8::load(const char *file_path) {
 void Chip8::emulate_cycle() {
 
     // Fetch op code
-    opcode = memory[pc] << 8 | memory[pc + 1];   // Op code is two bytes
+    opcode = memory[pc & 0xFFF] << 8 | memory[(pc + 1) & 0xFFF];   // Op code is two bytes
 
     switch(opcode & 0xF000){
 
@@ -326,7 +326,7 @@ void Chip8::emulate_cycle() {
             V[0xF] = 0;
             for (int yline = 0; yline < height; yline++)
             {
-                pixel = memory[I + yline];
+                pixel = memory[(I + yline) & 0xFFF];
                 for(int xline = 0; xline < 8; xline++)
                 {
                     if((pixel & (0x80 >> xline)) != 0)
@@ -440,16 +440,16 @@ void Chip8::emulate_cycle() {
                 // FX33 - Stores the Binary-coded decimal representation of VX
                 // at the addresses I, I plus 1, and I plus 2
                 case 0x0033:
-                    memory[I]     = V[(opcode & 0x0F00) >> 8] / 100;
-                    memory[I + 1] = (V[(opcode & 0x0F00) >> 8] / 10) % 10;
-                    memory[I + 2] = V[(opcode & 0x0F00) >> 8] % 10;
+                    memory[(I + 0) & 0xFFF] = V[(opcode & 0x0F00) >> 8] / 100;
+                    memory[(I + 1) & 0xFFF] = (V[(opcode & 0x0F00) >> 8] / 10) % 10;
+                    memory[(I + 2) & 0xFFF] = V[(opcode & 0x0F00) >> 8] % 10;
                     pc += 2;
                     break;
 
                 // FX55 - Stores V0 to VX in memory starting at address I
                 case 0x0055:
                     for (int i = 0; i <= ((opcode & 0x0F00) >> 8); ++i)
-                        memory[I + i] = V[i];
+                        memory[(I + i) & 0xFFF] = V[i];
 
                     // On the original interpreter, when the
                     // operation is done, I = I + X + 1.
@@ -459,7 +459,7 @@ void Chip8::emulate_cycle() {
 
                 case 0x0065:
                     for (int i = 0; i <= ((opcode & 0x0F00) >> 8); ++i)
-                        V[i] = memory[I + i];
+                        V[i] = memory[(I + i) & 0xFFF];
 
                     // On the original interpreter,
                     // when the operation is done, I = I + X + 1.
